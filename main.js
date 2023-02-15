@@ -1,3 +1,3 @@
-const name = document.getElementById("header");
-name.innerHTML = "BUG";
-console.log();
+const nazwa = document.getElementById("header");
+nazwa.innerHTML = "BUG";
+console.log(document.getElementById);
