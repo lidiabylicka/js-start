@@ -3,7 +3,10 @@
 //--------------------------
 
 //a) zdefiniuj zmienne const z wartościami w następujących typach: boolean, number, string. Wyloguj w konsoli te zmienne oraz użyj typeof aby wyświetlić również typy danych
-
+const isTrue = true;
+const number = 13;
+const sentence = "Espresso";
+console.log(isTrue, number, sentence);
 //b) użyj console log i wyświetl wyniki poniższych działań, dodatkowo wyjaśnij: jaki jest typ wyniku i z czego wynika.
 // 2 + "2"
 // 2 + 2
@@ -18,7 +21,7 @@
 
 //c) napisz krótko czym różni się typ referencyjny od typu prostego, oraz podaj przykłady tych typów. Odpowiedź wyświetl w konsoli
 
-//d) spróbuj przekonwertować i wyświetlić w konsoli poniższe wartości: 
+//d) spróbuj przekonwertować i wyświetlić w konsoli poniższe wartości:
 // let val = 0 (przekonwertuj na typ Boolean)
 // let num = "2137" (przekonwertuj na typ Number)
 // let str = 007 (przekonwertuj na String)
@@ -47,11 +50,11 @@
 //e) napisz funkcję która przyjmie obiekt testPerson i zwróci komunikat "Pan/i (imię) (nazwisko) ma (wiek) lat oraz (wzrost) cm wzrostu". Możesz zdefiniować inną osobę i użyc funkcji ponownie.
 
 let testPerson = {
-    name: "Jan",
-    surname: "Kowalski",
-    age: 20,
-    height: 180
-}
+  name: "Jan",
+  surname: "Kowalski",
+  age: 20,
+  height: 180,
+};
 
 //f) napisz funkcję która przyjmie obiekt testPerson oraz drugi parametr. Funkcja powinna zmienić wartośc jednego z klucza w obiekcie. Spróbuj zmodyfikować na przykład wiek.
 
@@ -90,27 +93,38 @@ let testPerson = {
 //k) napisz funkcję, która przyjmie numer i w pętli odliczy od 1 do 50, ale iteracja będzie się odbywać co podaną wartość. (Jeśli argumentem przekazanym do funkcji jest 3, to pętla ma odliczać 3,6,9 itp.)
 
 //l) napisz funkcję która przyjmie tablicę arrNames i wyświetli w konsoli przywitanie dla każdej z osób
-const arrNames = ["Ksawery", "Zenobiusz", "Klementyna", "Apolonia", "Jeremiasz", "Bernadetta"]
+const arrNames = [
+  "Ksawery",
+  "Zenobiusz",
+  "Klementyna",
+  "Apolonia",
+  "Jeremiasz",
+  "Bernadetta",
+];
 
 //ł) napisz funkcję która przymie tablicę arrObjects i wyświetli dla każdego obiektu informację "przed Tobą stoi (kolor) (marka)", np niebieski Mustang.
-const arrObjects = [{
+const arrObjects = [
+  {
     brand: "Mustang",
-    color: "niebieski"
-}, {
+    color: "niebieski",
+  },
+  {
     brand: "Tesla",
-    color: "czarna"
-}, {
+    color: "czarna",
+  },
+  {
     brand: "Polonez",
-    color: "żółty"
-}, {
+    color: "żółty",
+  },
+  {
     brand: "Toyota",
-    color: "fioletowa"
-}]
+    color: "fioletowa",
+  },
+];
 
 //m) napisz funkcję która przyjmie tablic arrNumbers i wyświetli w konsoli tylko przyste elementy tablicy
 
-const arrNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-
+const arrNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 //n)* napisz funkcję, która przeiteruje po tablicy arrTypes i:
 // - za pomocą push umieści elementy o typie innym niż number w tablicy arrOther
@@ -118,11 +132,28 @@ const arrNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 // - za pomocą push umieści numery parzyste w tablicy arrEven
 // - na końcu zwróci obiekt z tymi trzema tablicami
 
-const arrTypes = [2,4,5,undefined, null, "val", NaN, 7, 10, 333, "874", 22, 21, 400, "400", "undefined" ]
+const arrTypes = [
+  2,
+  4,
+  5,
+  undefined,
+  null,
+  "val",
+  NaN,
+  7,
+  10,
+  333,
+  "874",
+  22,
+  21,
+  400,
+  "400",
+  "undefined",
+];
 
-const arrOther = []
-const arrNubers = []
-const arrEven = []
+const arrOther = [];
+const arrNubers = [];
+const arrEven = [];
 
 //--------------------------
 // METODY
@@ -130,36 +161,69 @@ const arrEven = []
 
 //a) za pomocą metody map wyloguj przywitanie dla każdej osoby z tablicy names
 
-const names = ["Seba", "Kari", "Mati", "Andżi"]
+const names = ["Seba", "Kari", "Mati", "Andżi"];
 
 //b) za pomocą metody filter stwórz nową tablicę z tablicy array10 z parzystymi liczbami
 
-const array10 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+const array10 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 //c) użyj filter na tablicy people aby zwrócić tablicę tylko z kobietami
 
-const people = [{
+const people = [
+  {
     name: "Tomasz",
     lastname: "Kowalski",
     gender: "male",
-}, {
+  },
+  {
     name: "Karol",
     lastname: "Nowak",
     gender: "male",
-}, {
+  },
+  {
     name: "Joanna",
     lastname: "Kowalska",
     gender: "female",
-}, {
+  },
+  {
     name: "Anna",
     lastname: "Nowak",
     gender: "female",
-}]
+  },
+];
 
 //d) użyj metod takich jak split i sort aby zmienną shopping przekonwertować na tablicę z listą zakupów. Każde słowo powinno być osobną pozycją w tablicy. Ponad to posortuj wartości alfabetycznie. Spróbuj też ujednolicić wielkość liter aby lista była bardziej czytelna.
 
-const shopping = "kawa MaSŁo chleb WODA ogórki jabłka Ziemniaki chipsy salcesoN wędLIna pieczarki Włoszczyzna heRBata truskawKi maliny"
+const shopping =
+  "kawa MaSŁo chleb WODA ogórki jabłka Ziemniaki chipsy salcesoN wędLIna pieczarki Włoszczyzna heRBata truskawKi maliny";
 
 //e) połącz litery alfabetu w tablicy alphabet w jeden string a następnie odwróć kolejność aby wynik wyglądał tak: "ZYXWV..."
 
-const alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+const alphabet = [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+  "J",
+  "K",
+  "L",
+  "M",
+  "N",
+  "O",
+  "P",
+  "Q",
+  "R",
+  "S",
+  "T",
+  "U",
+  "V",
+  "W",
+  "X",
+  "Y",
+  "Z",
+];
