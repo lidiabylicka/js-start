@@ -147,7 +147,8 @@ function howLongAdult() {
     ? console.log(`It's been ${ageDiff} years since your first legal beer`)
     : console.log("You're not an adult yet!");
 }
-console.log(howLongAdult(age));
+howLongAdult();
+
 //d) napisz funkcję która przyjmie tablicę z co najmniej 3 elementami i zwróci następujący komunikat: "Przekazana tablica ma X elementów a elementem numer 3 jest X" w miejscach oznaczonych jako X powinny wyświetlać się odpowienie wartości
 console.log("d)");
 let threeBooleans = [true, true, false];
@@ -242,7 +243,7 @@ let myNumber = 7572;
 const isEven = (myNumber) => {
   myNumber % 2 === 0 ? console.log("Parzysta!") : console.log("Nieparzysta");
 };
-console.log(isEven(myNumber));
+isEven();
 
 //i)* napisz funkcję która wylosuje i zwróci liczbę od 1 do 10
 console.log("i)");
