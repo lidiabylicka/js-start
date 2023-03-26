@@ -9,8 +9,8 @@ const people = [
     lastName: "Loza",
   },
   {
-    firstName: "Lidia",
-    lastName: "Test",
+    firstName: "JP",
+    lastName: "2",
   },
 ];
 
@@ -22,7 +22,7 @@ const people = [
       b) -OK pobierze 3 ostatnie litery nazwiska, zamieni kolejnością pierwszą i ostatnią i dołączy powstały string do poprzedniego
       c*) -OK Zmieni wielkość liter w taki sposób, żeby powstały nick zaczynał się wielką literą i nie miał żadnych wielkich liter poza 1.
       d) - OK Jeżeli liczba znaków w imieniu bądź nazwisku jest mniejsza niż 3, nickname będzie odpowiednio krótszy 
-      e) -IN PROGRESS - rozważcie wszystkie skrajne przypadki, ponieważ Waszą funkcję mapującą wrzucimy do testów na platformie
+      e) rozważcie wszystkie skrajne przypadki, ponieważ Waszą funkcję mapującą wrzucimy do testów na platformie
       e) Have fun :)
       Na przykład:
       Dla osoby: 
@@ -33,33 +33,50 @@ const people = [
       powinniśmy uzyskać nickname Rabona
   */
 
-const nicknameEach = people.map((name, index) => {
-  const firstNames = people
-    .map((person) =>
-      person.firstName.slice(0, 3).toLowerCase().split("").reverse().join("")
-    )
-    .map((name) => name[0].toUpperCase() + name.substring(1));
-  const lastNames = people
-    .map((person) => person.lastName.slice(-3).toLowerCase())
-    .map((name) =>
-      name.length < 2
-        ? name
-        : name[name.length - 1] + name.substring(1, name.length - 1) + name[0]
-    );
-  const arrayNicknames = [];
-  arrayNicknames.push(firstNames[index] + lastNames[index]);
-  console.log(arrayNicknames); // array with nicknames displays correct nicknames in correct order
-  people.map(
-    (obj, index) =>
-      (obj.nickname = people.reduce(
-        (nickname, index) => (nickname = arrayNicknames)
-      )) // the third nickname is being added to all objects as opposed to each nickname to each object respectively
-  );
+const result = people.map((person) => {
+  const firstPart = person.firstName
+    .slice(0, 3)
+    .toLowerCase()
+    .split("")
+    .reverse()
+    .join("");
+  const finalFirstPart = firstPart[0].toUpperCase() + firstPart.substring(1);
+  const secondPart = person.lastName.slice(-3).toLowerCase();
+  const finalSecondPart =
+    secondPart.length < 2
+      ? secondPart
+      : secondPart[secondPart.length - 1] +
+        secondPart.substring(1, secondPart.length - 1) +
+        secondPart[0];
+
+  return {
+    ...person,
+    nickname: finalFirstPart + finalSecondPart,
+    introduceYourself() {
+      //introduceYourself dodane jako method?
+      `Cześć jestem ${this.firstName} ${
+        this.lastName
+      }, ale w szkole mówią na mnie [${finalFirstPart + finalSecondPart}]`;
+    },
+  };
 });
 
-console.log(people);
+console.log("osoby z nicknames plus 1 testowa osoba:", result);
 
-//----------------DRUGA CZESC ZADANIA -----------------------
+const welcomes = [];
+function getWelcomes() {
+  result.forEach(function (person, index) {
+    welcomes.push(
+      `Cześć jestem ${result.firstName} ${
+        result.lastName
+      }, ale w szkole mówią na mnie [${
+        result.finalFirstPart + result.finalSecondPart
+      }]`
+    );
+  });
+}
+console.log("wywolanie powitan", welcomes);
+
 //  DANE WEJŚCIOWE
 const people2 = [
   {
