@@ -86,15 +86,15 @@ const result = people.map((person) => {
   };
 });
 
-// console.log("zad 1a)b)c)d)e) result");
-// console.log(result);
-// console.log("zad 2a)wywolanie powitania:");
-// result[0].introduceYourself();
+console.log("zad 1a)b)c)d)e) result");
+console.log(result);
+console.log("zad 2a)wywolanie powitania:");
+result[0].introduceYourself();
 
-// console.log("2b)wywolanie powitania dla kazdego:");
-// const welcomeAll = result.forEach((person, index, result) => {
-//   return person.introduceYourself();
-// }); ==========> odkomentuj
+console.log("2b)wywolanie powitania dla kazdego:");
+const welcomeAll = result.forEach((person, index, result) => {
+  return person.introduceYourself();
+});
 
 //  DANE WEJŚCIOWE
 const people2 = [
@@ -159,13 +159,13 @@ const people3 = [
       - w funkcji musicie użyć słówka this, parametru i tablicy, która jest na zewnątrz, tablica z kolorami może mieć
       dowoloną ilość kolorów
   */
-// value = 30;
+value = 30;
 const colors = ["red", "green", "yellow", "blue", "pink", "orange"];
-// console.log("zad 3 a)b)c)d)e)f)+hints");
-// result[0].getFavouriteColor();
-// result[0].getFavouriteColor(0);
-// result[0].getFavouriteColor(100);
-// result[0].getFavouriteColor(value); =====> odkomentuj
+console.log("zad 3 a)b)c)d)e)f)+hints");
+result[0].getFavouriteColor();
+result[0].getFavouriteColor(0);
+result[0].getFavouriteColor(100);
+result[0].getFavouriteColor(value);
 
 /*
       4. Napisz funkcję analogiczną do funkcji z zadania 3, ale nie dodawaj jej w obiekcie.
@@ -250,8 +250,9 @@ const reversedPeople = filteredPeople.map((person) => {
   }
   return reversedObject;
 });
+console.log("reversedPeople no functions:");
 console.log(reversedPeople);
-console.log("5 e) unsure if that was the desired outcome?");
+console.log("5 e) empty {} if isElite false");
 const reversedPeopleKeysOnly = reversedPeople.reduce((object, array) => {
   for (key in array) {
     object[key] = array[key];
