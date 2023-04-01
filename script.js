@@ -52,30 +52,49 @@ const result = people.map((person) => {
   return {
     ...person,
     nickname: finalFirstPart + finalSecondPart,
-    introduceYourself() {
-      //introduceYourself dodane jako method?
-      `Cześć jestem ${this.firstName} ${
-        this.lastName
-      }, ale w szkole mówią na mnie [${finalFirstPart + finalSecondPart}]`;
+    introduceYourself: function () {
+      console.log(
+        "Cześć jestem " +
+          this.firstName +
+          " " +
+          this.lastName +
+          ", ale w szkole mówią na mnie [" +
+          this.nickname +
+          "]."
+      );
+    },
+    getFavouriteColor: function (value) {
+      if (value < 1) {
+        return console.log(
+          "- podałeś za małą liczbę, liczba nie może być mniejsza niż 1"
+        );
+      } else if (value > 30) {
+        return console.log(
+          "- podałeś za dużą liczbę, liczba nie może być większa niż 30"
+        );
+      } else if (value == undefined) {
+        value = 5;
+      }
+      let nameNumber =
+        this.firstName.length + this.lastName.length + this.nickname.length;
+      let minus = Math.abs(nameNumber - value);
+      let colorsLength = colors.length;
+      let index = minus % colorsLength;
+      let getColorByIndex = colors[index];
+      console.log(getColorByIndex);
     },
   };
 });
 
-console.log("osoby z nicknames plus 1 testowa osoba:", result);
+// console.log("zad 1a)b)c)d)e) result");
+// console.log(result);
+// console.log("zad 2a)wywolanie powitania:");
+// result[0].introduceYourself();
 
-const welcomes = [];
-function getWelcomes() {
-  result.forEach(function (person, index) {
-    welcomes.push(
-      `Cześć jestem ${result.firstName} ${
-        result.lastName
-      }, ale w szkole mówią na mnie [${
-        result.finalFirstPart + result.finalSecondPart
-      }]`
-    );
-  });
-}
-console.log("wywolanie powitan", welcomes);
+// console.log("2b)wywolanie powitania dla kazdego:");
+// const welcomeAll = result.forEach((person, index, result) => {
+//   return person.introduceYourself();
+// }); ==========> odkomentuj
 
 //  DANE WEJŚCIOWE
 const people2 = [
@@ -119,8 +138,6 @@ const people3 = [
   },
 ];
 
-const colors = ["red", "green", "yellow", "blue", "pink", "orange"];
-
 /*
       3. 
       a) Dodaj do każdego obiektu funkcję getFavouriteColor
@@ -142,6 +159,13 @@ const colors = ["red", "green", "yellow", "blue", "pink", "orange"];
       - w funkcji musicie użyć słówka this, parametru i tablicy, która jest na zewnątrz, tablica z kolorami może mieć
       dowoloną ilość kolorów
   */
+// value = 30;
+const colors = ["red", "green", "yellow", "blue", "pink", "orange"];
+// console.log("zad 3 a)b)c)d)e)f)+hints");
+// result[0].getFavouriteColor();
+// result[0].getFavouriteColor(0);
+// result[0].getFavouriteColor(100);
+// result[0].getFavouriteColor(value); =====> odkomentuj
 
 /*
       4. Napisz funkcję analogiczną do funkcji z zadania 3, ale nie dodawaj jej w obiekcie.
@@ -149,21 +173,107 @@ const colors = ["red", "green", "yellow", "blue", "pink", "orange"];
       b) funkcja powinna wykonać dokładnie takie samo działanie jak poprzednia
       c) Za pomocą pętli for of przeiteruj po wszystkich osobach z tablicy i wyświetl ich ulubione kolory
   */
+console.log("zad 4 a)b)c)");
+let value2 = undefined;
 
+function getTheirFavouriteColors(value2) {
+  if (value2 < 1) {
+    return console.log(
+      "- podałeś za małą liczbę, liczba nie może być mniejsza niż 1"
+    );
+  } else if (value2 > 30) {
+    return console.log(
+      "- podałeś za dużą liczbę, liczba nie może być większa niż 30"
+    );
+  } else if (value2 == undefined) {
+    value2 = 5;
+  }
+  let nameNumber =
+    person.firstName.length + person.lastName.length + person.nickname.length;
+  let minus = Math.abs(nameNumber - value2);
+  let colorsLength = colors.length;
+  let index = minus % colorsLength;
+  let getColorByIndex = colors[index];
+  return getColorByIndex;
+}
+for (person of result) {
+  console.log(
+    person.firstName +
+      "'s favourite color is " +
+      getTheirFavouriteColors(value2)
+  );
+}
+//zadanie 5:
+console.log("zad. 5 a)b)");
+const isEliteChance = Math.floor(Math.random() * 100);
+console.log("isEliteChance:", isEliteChance);
+function isPrime(n) {
+  if (n === 1) {
+    return false;
+  } else if (n === 2) {
+    return true;
+  } else {
+    for (x = 2; x < n; x++) {
+      if (n % x === 0) {
+        return false;
+      }
+    }
+    return true;
+  }
+}
+
+const isElite =
+  isEliteChance % 3 === 0 ||
+  isEliteChance % 5 === 0 ||
+  isPrime(isEliteChance) === true
+    ? true
+    : false;
+console.log("isElite gateway:", isElite);
+
+const filteredPeople = result.filter(
+  (person) =>
+    isElite === true ||
+    person.firstName.endsWith("k") ||
+    (person.firstName.endsWith("a") &&
+      person.lastName.length > 6 &&
+      person.nickname.includes("a"))
+);
+console.log("filteredPeople", filteredPeople);
+console.log("5 d)");
+const reversedPeople = filteredPeople.map((person) => {
+  let reversedObject = {};
+  delete person.introduceYourself;
+  delete person.getFavouriteColor;
+  for (key in person) {
+    person.key++;
+    reversedObject[person[key]] = key;
+  }
+  return reversedObject;
+});
+console.log(reversedPeople);
+console.log("5 e) unsure if that was the desired outcome?");
+const reversedPeopleKeysOnly = reversedPeople.reduce((object, array) => {
+  for (key in array) {
+    object[key] = array[key];
+  }
+  return object;
+}, {});
+console.log(reversedPeopleKeysOnly);
 /*
       5. Zadanie polega na użyciu .filter() .map() .reduce w wersji łańcuchowej,
       czyli nie twórz nowych tablic w momencie wykonanie jednej z powyższych metod, połącz wykonanie ze sobą w jeden 
       "łańcuch" tzn. const wynik = arr.filter().map().reduce()
-      a) Przefiltruj tablicę w taki sposób, aby zostały w niej osoby,
+
+      a) -OK Przefiltruj tablicę w taki sposób, aby zostały w niej osoby,
       których imię kończy się na literę 'a' lub 'k' 
       i nazwisko ma więcej znaków niż 6 
       i nick zawiera w sobie przynajmniej jedną literę a
-      b) do powyższego warunku dodaj "furtkę" w postaci parametru isElite. Zmienna isElite powinna być obliczona
+      b) - OK do powyższego warunku dodaj "furtkę" w postaci parametru isElite. Zmienna isElite powinna być obliczona
       za pomocą generatora liczb pseudolosowych Math.random(). Za pomocą tego generatora wylosujcie liczbę z zakresu 0 - 100.
       Jeżeli wartość losowej liczby będzie liczbą pierwszą lub będzie podzielna przez 3 i 5, ustawcie isElite na true, w pozostałych przypadkach
       isElite powinno być ustawione na false
-      c) jeżeli zmienna isElite ma wartość true, nie bierzcie pod uwagę warunku z punktu a przy filtracji
-      d) za pomocą funkcji map i for in odwróccie wartości i klucze w obiekcie, usuwając przy tym funkcje
+      c) - OK jeżeli zmienna isElite ma wartość true, nie bierzcie pod uwagę warunku z punktu a przy filtracji
+      d) - OK za pomocą funkcji map i for in odwróccie wartości i klucze w obiekcie, usuwając przy tym funkcje
       Przykład
       INPUT
       {
@@ -179,10 +289,10 @@ const colors = ["red", "green", "yellow", "blue", "pink", "orange"];
           Lozano: "lastName",
           Rabona: "nickname",
       },
-      e) zredukuj tablicę obiektów do pojedynczego obiektu, który będzie zawierał wszystkie klucze i wartości
+      e) - OK zredukuj tablicę obiektów do pojedynczego obiektu, który będzie zawierał wszystkie klucze i wartości
       wszystkich obiektów z tablicy, dzięki temu, że w punkcie d) odwrócilismy klucze z wartościami, nie będzie 
       z tym problemu :)
-      f) posortuj tablicę alfabetycznie
+      f) posortuj tablicę alfabetycznie --> cancelled
   */
 
 /*
@@ -197,6 +307,36 @@ const colors = ["red", "green", "yellow", "blue", "pink", "orange"];
       - funkcja może zwracać inne funkcje
       - funkcja może korzystać ze zmiennych i parametrów funkcji zewnętrznych (czyli tych w których się znajduje)
   */
+console.log("zad 6) a) nie do konca rozumiem");
+const multi = (a) => {
+  return (b) => {
+    return a * b;
+  };
+};
+console.log("multi(5)(6)", multi(5)(6));
+
+function multi2(a) {
+  return function (b) {
+    return function (c) {
+      return function (d) {
+        return a * b * c * d;
+      };
+    };
+  };
+}
+console.log("multi2(4)(5)(6)(10)", multi2(4)(5)(6)(10));
+
+function sum(a) {
+  const multiplyBySix = (b) => {
+    return a * b;
+  };
+  multiplyBySix.add = (b) => {
+    return sum(6);
+  };
+  return multiplyBySix;
+}
+const multiplyBySix = sum(6);
+console.log("multiplyBySix(10)", multiplyBySix(10));
 
 /*
       **7. Rekurencja
@@ -246,3 +386,23 @@ const nestedObject = {
     },
   ],
 };
+
+console.log(
+  "7)a) rekurencja - duzo googlowania przy tym zadaniu, nie rozumiem jak dac imiona jednej osoby razem"
+);
+
+function getAllNames(obj) {
+  let allNames = [];
+
+  for (person in obj) {
+    let value = obj[person];
+    if (typeof value === "object") {
+      allNames = allNames.concat(getAllNames(value));
+    } else {
+      allNames.push(value);
+    }
+  }
+  return allNames;
+}
+const allNames = getAllNames(nestedObject);
+console.log(allNames);
