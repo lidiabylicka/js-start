@@ -300,7 +300,7 @@ console.log(reversedPeopleKeysOnly);
       *6. Currying function
       a) Napisz taką funkcję mnożącą 2 liczby, aby możliwe były następujące wywołania:
       - multi(5)(6)
-      - const multiplyBySix = sum(6)
+      - const multiplyBySix = MULTI(6)
         multiplyBySix(10)
       b) Analogicznie napisz funkcję, która mnoży 4 liczby i możliwe jest wywołanie
       - multi(4)(5)(6)(10)
@@ -316,6 +316,7 @@ const multi = (a) => {
 };
 console.log("multi(5)(6)", multi(5)(6));
 
+console.log("b)");
 function multi2(a) {
   return function (b) {
     return function (c) {
@@ -398,7 +399,12 @@ function getAllNames(obj) {
   for (person in obj) {
     let value = obj[person];
     if (typeof value === "object") {
-      allNames = allNames.concat(getAllNames(value));
+      //odtad probuje dopisac nowe
+      // if (value.includes("name") === true) {
+      //   value = value.join(" ");
+      // }
+
+      allNames = allNames.concat(getAllNames(value)); //ta czesc kodu ok
     } else {
       allNames.push(value);
     }
